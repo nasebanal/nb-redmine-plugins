@@ -4,7 +4,13 @@ class MailTrackersController < ApplicationController
   before_filter :find_project, :authorize, :only => :index
 
   def index
-#    @project = Project.find(params[:project_id])
+    @yaml = Rails.root.join('config','configuration.yml')
+
+    if File.exists? ( @yaml )
+      @config = YAML.load_file( @yaml )
+    else
+      @config = {}
+    end
   end
 
   private

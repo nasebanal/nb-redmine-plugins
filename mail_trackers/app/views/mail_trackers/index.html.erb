@@ -4,4 +4,36 @@
 
 <% html_title "Mail Trackers" %>
 
-<h2>MailTrackersController#index</h2>
+<h2>Mail Tracking</h2>
+
+<table border>
+  <tr>
+    <th>Key</th>
+    <th>Value</th>
+  </tr>
+
+  <tr>
+    <td>file path</td>
+    <td><%= @yaml %></td>
+  </tr>
+
+  <tr>
+    <td>address</td>
+    <td><%= @config["production"]["email_delivery"]["smtp_settings"]["address"] %></td>
+  </tr>
+
+  <tr>
+    <td>domain</td>
+    <td><%= @config["production"]["email_delivery"]["smtp_settings"]["domain"] %></td>
+  </tr>
+
+  <tr>
+    <td>user_name</td>
+    <td><%= @config["production"]["email_delivery"]["smtp_settings"]["user_name"] %></td>
+  </tr>
+
+  <tr>
+    <td>password</td>
+    <td><%= @config["production"]["email_delivery"]["smtp_settings"]["password"] %></td>
+  </tr>
+</table>
