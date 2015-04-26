@@ -1,0 +1,73 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'mail_trackers', :plugin => 'mail_trackers' %>
+<% end %>
+
+<% html_title "Mail Trackers - Summary" %>
+
+<h2>Deliverability Metrics - Summary</h2>
+
+<fieldset>
+<legend><h3>Search Key</h3></legend>
+
+<%= form_tag '/redmine/mail_trackers/summary', :method => :get do %>
+
+  <table>
+  <tr>
+    <td>From</td>
+    <td><input type="text" name="from" value="<%= @from %>"></td>
+    <td>To</td>
+    <td><input type="text" name="to" value="<%= @to %>"></td>
+    <td>Domains</td>
+    <td><input type="text" name="domains" value="<%= @domains %>"></td>
+    <td>Campaigns</td>
+    <td><input type="text" name="campaigns" value="<%= @campaigns %>"></td>
+  </tr>
+
+  <tr>
+    <td>Templates</td>
+    <td><input type="text" name="templates" value="<%= @templates %>"></td>
+    <td>Sandbox</td>
+    <td><input type="text" name="sandbox" value="<%= @sandbox %>"></td>
+    <td>Precision</td>
+    <td><input type="text" name="precision" value="<%= @precision %>"></td>
+    <td>Metrics</td>
+    <td><input type="text" name="metrics" value="<%= @metrics %>"></td>
+  </tr>
+
+  <tr>
+    <td>Timezone</td>
+    <td><input type="text" name="timezone" value="<%= @timezone %>"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><input type="hidden" name="project_id" value="<%= @project_id %>"></td>
+    <td><%= submit_tag 'display' %></td>
+  </tr>
+</table>
+<% end %>
+
+</fieldset>
+
+<fieldset>
+<legend><h3>Search Results</h3></legend>
+
+<table border>
+  <tr>
+    <th>Key</th>
+	<th>Value</th>
+  </tr>
+
+<% @response["results"].each do |result| %>
+  <% result.each do |key, value| %>
+  <tr>
+    <td><%= key %></td>
+    <td><%= value %></td>
+  </tr>
+  <% end %>
+<% end %>
+</table>
+</fieldset>
+
+<h3>Message</h3>
+<%= @message %>

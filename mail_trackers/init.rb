@@ -6,7 +6,7 @@ Redmine::Plugin.register :mail_trackers do
   url 'https://github.com/nasebanal/nb-redmine-plugins'
   author_url 'https://github.com/syatsuzuka'
   project_module :mail_trackers do
-    permission :view_mail_trackers, :mail_trackers => :index
+    permission :mail_trackers, :mail_trackers => [:index, :summary, :bounce, :reject, :delay]
   end
   menu :project_menu, :mail_trackers, { :controller => 'mail_trackers', :action => 'index' }, :caption => 'MailTrackers', :after => :repository, :param => :project_id
 end

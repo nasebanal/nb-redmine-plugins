@@ -1,0 +1,24 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'mail_trackers', :plugin => 'mail_trackers' %>
+<% end %>
+
+<% html_title "Mail Trackers - Reject" %>
+
+<h2>Deliverability Metrics - Reject</h2>
+
+<table border>
+  <tr>
+    <th>Key</th>
+	<th>Value</th>
+  </tr>
+
+<% @response["results"].each do |result| %>
+  <% result.each do |key, value| %>
+  <tr>
+    <td><%= key %></td>
+    <td><%= value %></td>
+  </tr>
+  <% end %>
+<% end %>
+
+</table>

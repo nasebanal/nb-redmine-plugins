@@ -6,6 +6,9 @@
 
 <h2>Mail Tracking</h2>
 
+<fieldset>
+<legend><h3>SparkPost API Key</h3></legend>
+
 <table border>
   <tr>
     <th>Key</th>
@@ -19,21 +22,36 @@
 
   <tr>
     <td>address</td>
-    <td><%= @config["production"]["email_delivery"]["smtp_settings"]["address"] %></td>
+    <td><%= @address %></td>
   </tr>
 
   <tr>
     <td>domain</td>
-    <td><%= @config["production"]["email_delivery"]["smtp_settings"]["domain"] %></td>
+    <td><%= @domain %></td>
   </tr>
 
   <tr>
     <td>user_name</td>
-    <td><%= @config["production"]["email_delivery"]["smtp_settings"]["user_name"] %></td>
+    <td><%= @user_name %></td>
   </tr>
 
   <tr>
     <td>password</td>
-    <td><%= @config["production"]["email_delivery"]["smtp_settings"]["password"] %></td>
+    <td><%= @password %></td>
   </tr>
 </table>
+</fieldset>
+
+
+<fieldset>
+<legend><h3>Deliverability Metrics</h3></legend>
+
+[<%= link_to 'Summary', { :action => 'summary', :project_id => params[:project_id] }, :method => :get %>]
+
+[<%= link_to 'Bounce Reason', { :action => 'bounce', :project_id => params[:project_id] }, :method => :get %>]
+
+[<%= link_to 'Rejection', { :action => 'reject', :project_id => params[:project_id] }, :method => :get %>]
+
+[<%= link_to 'Delay', { :action => 'delay', :project_id => params[:project_id] }, :method => :get %>]
+
+</fieldset>
